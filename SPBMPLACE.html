@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏒SPBMPLACE
+    </title>
+    <style>
+        /* Общие стили для страницы */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('background.jpg') no-repeat center center fixed; /* Используем изображение как фон */
+            background-size: cover; /* Покрытие всего фона */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(24, 19, 19, 0.7); /* Полупрозрачный черный фон */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Стили для кнопки */
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.1); /* Легкое увеличение кнопки при наведении */
+        }
+
+        button:active {
+            transform: scale(1); /* Возврат к обычному размеру при нажатии */
+        }
+
+        /* Стили для результата */
+        .result {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 30px;
+            color: #f7f7f7;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .result.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏒SPBMARKETPLACE🏒</h1>
+        <p>Победителем в конкурсе становится...</p>
+        <button onclick="pickRandomNumber()">Выбрать билет</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        // Список чисел
+        const numbers = [
+            "SPBMP00561 — @plugloop", "SPBMP00707 — @willwiliams ", "SPBMP99420 — @loopSPB"
+        ];
+
+        // Функция для выбора случайного числа
+        function pickRandomNumber() {
+            const randomIndex = Math.floor(Math.random() * numbers.length);
+            const randomNumber = numbers[randomIndex];
+            const resultElement = document.getElementById("result");
+            resultElement.textContent = "Билет: " + randomNumber;
+            resultElement.classList.add("show");
+
+            // Убираем результат через 5 секунд, чтобы снова был скрыт
+            setTimeout(() => {
+                resultElement.classList.remove("show");
+            }, 2500);
+        }
+    </script>
+
+</body>
+</html>
